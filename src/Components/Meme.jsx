@@ -3,13 +3,26 @@ import memeData from "../memeData"
 
 export default function Meme(){
 
-    const[MemeImage, setMemeImage] = useState("")
+    // const[MemeImage, setMemeImage] = useState("http://i.imgflip.com/1bij.jpg")
+
+    const[meme, setMeme] = useState({
+        topText: "",
+        bottomText: "",
+        randomImage: "http://i.imgflip.com/1bij.jpg"
+    })
+
+    const[allMemeImage, setAllMemeImage] = useState(memeData)
 
 
     function getMemeImage(){
-        const memeArr = memeData.data.memes;
+        const memeArr = allMemeImage.data.memes;
         const randomNumber = Math.floor(Math.random() * memeArr.length)
-        setMemeImage(memeArr[randomNumber].url)
+        const url = memeArr[randomNumber].url
+
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            randomImage: url
+        }))
         //console.log(url)
     }
 
@@ -22,7 +35,7 @@ export default function Meme(){
         <button className="form--button"  onClick={getMemeImage}>Get a new meme image 🖼</button>
 
         </div>
-        <img src={MemeImage} className="meme--image"/>
+        <img src={meme.randomImage} className="meme--image"/>
     </main>
     )
 }
