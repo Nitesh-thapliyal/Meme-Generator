@@ -1,11 +1,14 @@
 import React from "react"
 
-export default function Header(){
-
-    return(
-        <header>
-            <img src="/Images/troll-face.png" className="logo"/>
-            <h1 className="header-text">Meme Generator</h1>
+export default function Header() {
+    return (
+        <header className="header">
+            <img 
+                src="./Images/troll-face.png" 
+                className="header--image"
+            />
+            <h2 className="header--title">Meme Generator</h2>
+            
         </header>
     )
 }
